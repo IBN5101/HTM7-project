@@ -5,6 +5,8 @@ public class GameManager : StaticInstance<GameManager> {
     public static event Action<GameState> OnBeforeStateChanged;
     public static event Action<GameState> OnAfterStateChanged;
 
+    [SerializeField] private GameObject _winScreen;
+
     public GameState State { get; private set; }
 
     void Start() => ChangeState(GameState.SETUP);
@@ -20,6 +22,8 @@ public class GameManager : StaticInstance<GameManager> {
             case GameState.RUNNING:
             case GameState.CHARACTERMOVE:
             case GameState.WIN:
+                HandleWinning();
+                break;
             case GameState.LOSE:
                 break;
             default:
@@ -33,6 +37,10 @@ public class GameManager : StaticInstance<GameManager> {
 
     private void HandleStarting() { 
         ChangeState(GameState.RUNNING);
+    }
+
+    private void HandleWinning() {
+        _winScreen.SetActive(true);
     }
 }
 
