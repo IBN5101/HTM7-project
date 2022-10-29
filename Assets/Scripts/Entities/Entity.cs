@@ -5,19 +5,26 @@ using UnityEngine;
 public class Entity : MonoBehaviour
 {
     public GridPosition gridPosition;
+    public string entityName { protected set; get; }
+
+    private void Awake()
+    {
+        entityName = "Entity";
+    }
 
     private void Start()
+    {
+        InitializeGridPosition();
+        SnapToGrid();
+    }
+
+    protected void InitializeGridPosition()
     {
         gridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         LevelGrid.Instance.AddEntityAtGridPosition(gridPosition, this);
     }
 
-    private void Update()
-    {
-        UpdateGridPosition();
-    }
-
-    private void UpdateGridPosition()
+    protected void UpdateGridPosition()
     {
         GridPosition newGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         if (newGridPosition != gridPosition)
@@ -26,6 +33,11 @@ public class Entity : MonoBehaviour
             LevelGrid.Instance.EntityMovedGridPosition(this, gridPosition, newGridPosition);
             gridPosition = newGridPosition;
         }
+    }
+
+    protected void SnapToGrid()
+    {
+        transform.position = LevelGrid.Instance.GetWorldPosition(gridPosition);
     }
 
 }

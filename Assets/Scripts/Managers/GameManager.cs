@@ -18,7 +18,6 @@ public class GameManager : StaticInstance<GameManager> {
                 HandleStarting();
                 break;
             case GameState.RUNNING:
-                HandleSpawningHeroes();
                 break;
             case GameState.WIN:
                 break;
@@ -37,24 +36,9 @@ public class GameManager : StaticInstance<GameManager> {
         ChangeState(GameState.RUNNING);
     }
 
-    private void HandleSpawningHeroes() {
-        CharacterManager.Instance.SpawnHeroes();
-        
-        //ChangeState(GameState.SpawningEnemies);
-    }
-
-    private void HandleSpawningEnemies() {
-        
-        // Spawn enemies
-        
-        //ChangeState(GameState.HeroTurn);
-    }
-
-    private void HandleHeroTurn() {
-        // If you're making a turn based game, this could show the turn menu, highlight available units etc
-        
-        // Keep track of how many units need to make a move, once they've all finished, change the state. This could
-        // be monitored in the unit manager or the units themselves.
+    private void HandlePlayerMove()
+    {
+        ChangeState(GameState.CHARACTERMOVE);
     }
 }
 
