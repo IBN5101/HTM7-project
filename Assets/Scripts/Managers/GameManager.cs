@@ -37,8 +37,6 @@ public class GameManager : StaticInstance<GameManager> {
         }
 
         OnAfterStateChanged?.Invoke(newState);
-        
-        Debug.Log($"New state: {newState}");
     }
 
     private void HandleStarting() { 

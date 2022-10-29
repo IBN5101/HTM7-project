@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using static UnityEngine.CullingGroup;
 
 public class Pumpkin : Entity
 {
+    public event EventHandler OnGridPositionUpdated;
+
     [SerializeField] private float forceMulti = 50f;
 
     private Rigidbody2D rigidBody2D;
@@ -87,5 +90,18 @@ public class Pumpkin : Entity
             return true;
         }
         return false;
+    }
+
+    protected override void UpdateGridPosition()
+    {
+        GridPosition newGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
+        if (newGridPosition != gridPosition)
+        {
+            // Unit changed GridPosition
+            LevelGrid.Instance.EntityMovedGridPosition(this, gridPosition, newGridPosition);
+            gridPosition = newGridPosition;
+
+            OnGridPositionUpdated?.Invoke(this, EventArgs.Empty);
+        }
     }
 }
