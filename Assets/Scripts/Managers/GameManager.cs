@@ -18,9 +18,8 @@ public class GameManager : StaticInstance<GameManager> {
                 HandleStarting();
                 break;
             case GameState.RUNNING:
-                break;
+            case GameState.CHARACTERMOVE:
             case GameState.WIN:
-                break;
             case GameState.LOSE:
                 break;
             default:
@@ -35,18 +34,13 @@ public class GameManager : StaticInstance<GameManager> {
     private void HandleStarting() { 
         ChangeState(GameState.RUNNING);
     }
-
-    private void HandlePlayerMove()
-    {
-        ChangeState(GameState.CHARACTERMOVE);
-    }
 }
 
 [Serializable]
 public enum GameState {
     SETUP = 0,
     RUNNING = 1,
-    CHARACTERMOVE = 2,
     WIN = 2,
     LOSE = 3,
+    CHARACTERMOVE = 4,
 }

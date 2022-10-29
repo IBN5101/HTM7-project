@@ -2762,11 +2762,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1969712729506572054, guid: 1b57859c201c8d04295190ff9050c277, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.11
+      value: 2.04
       objectReference: {fileID: 0}
     - target: {fileID: 1969712729506572054, guid: 1b57859c201c8d04295190ff9050c277, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.05
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1969712729506572054, guid: 1b57859c201c8d04295190ff9050c277, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2803,6 +2803,22 @@ PrefabInstance:
     - target: {fileID: 1969712729506572055, guid: 1b57859c201c8d04295190ff9050c277, type: 3}
       propertyPath: m_Name
       value: Pumpkin
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321074079822729686, guid: 1b57859c201c8d04295190ff9050c277, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321074079822729686, guid: 1b57859c201c8d04295190ff9050c277, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 6200000, guid: 2bd3dc9fc0d0a224b8852fdc5223d813, type: 2}
+    - target: {fileID: 5321074079822729686, guid: 1b57859c201c8d04295190ff9050c277, type: 3}
+      propertyPath: m_AngularDrag
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 5321074079822729686, guid: 1b57859c201c8d04295190ff9050c277, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8314430773974546828, guid: 1b57859c201c8d04295190ff9050c277, type: 3}
       propertyPath: forceMulti
