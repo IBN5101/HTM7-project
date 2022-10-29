@@ -21,6 +21,7 @@ public class GameManager : StaticInstance<GameManager> {
                 break;
             case GameState.RUNNING:
             case GameState.CHARACTERMOVE:
+                break;
             case GameState.WIN:
                 HandleWinning();
                 break;
