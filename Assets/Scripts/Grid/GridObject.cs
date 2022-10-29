@@ -34,7 +34,7 @@ public class GridObject
     {
         string entitiesString = "";
         foreach (Entity entity in entities)
-            entitiesString += entity + "\n";
+            entitiesString += entity.entityName + "\n";
         return gridPosition.ToString() + "\n" + entitiesString;
 
     }
