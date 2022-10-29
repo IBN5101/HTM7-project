@@ -24,7 +24,7 @@ public class Entity : MonoBehaviour
         LevelGrid.Instance.AddEntityAtGridPosition(gridPosition, this);
     }
 
-    protected void UpdateGridPosition()
+    protected virtual void UpdateGridPosition()
     {
         GridPosition newGridPosition = LevelGrid.Instance.GetGridPosition(transform.position);
         if (newGridPosition != gridPosition)
