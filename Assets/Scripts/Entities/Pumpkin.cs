@@ -13,7 +13,7 @@ public class Pumpkin : Entity
 
     private void Awake() 
     { 
-        GameManager.OnBeforeStateChanged += OnStateChanged;
+        entityName = "pumpkin";
 
         rigidBody2D = GetComponent<Rigidbody2D>();
     }
@@ -24,13 +24,6 @@ public class Pumpkin : Entity
         InitializeGridPosition();
         SnapToGrid();
         rigidBody2D.simulated = true;
-    }
-
-    private void OnDestroy() => GameManager.OnBeforeStateChanged -= OnStateChanged;
-
-    private void OnStateChanged(GameState newState)
-    {
-        
     }
 
     private void Update()
