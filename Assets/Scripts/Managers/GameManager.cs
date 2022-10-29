@@ -6,6 +6,7 @@ public class GameManager : StaticInstance<GameManager> {
     public static event Action<GameState> OnAfterStateChanged;
 
     [SerializeField] private GameObject _winScreen;
+    [SerializeField] private GameObject _loseScreen;
 
     public GameState State { get; private set; }
 
@@ -26,6 +27,7 @@ public class GameManager : StaticInstance<GameManager> {
                 HandleWinning();
                 break;
             case GameState.LOSE:
+                HandleLosing();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(newState), newState, null);
@@ -42,6 +44,12 @@ public class GameManager : StaticInstance<GameManager> {
 
     private void HandleWinning() {
         _winScreen.SetActive(true);
+        _loseScreen.SetActive(false);
+    }
+
+    private void HandleLosing() {
+        _winScreen.SetActive(false);
+        _loseScreen.SetActive(true);
     }
 }
 
