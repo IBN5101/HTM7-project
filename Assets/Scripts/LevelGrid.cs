@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,6 +13,7 @@ public class LevelGrid : MonoBehaviour
     [SerializeField] private int gridWidth = 10;
     [SerializeField] private int gridHeight = 10;
     [SerializeField] private float cellSize = 2;
+    [SerializeField] private bool testing = true;
 
     private GridSystem gridSystem;
 
@@ -20,7 +22,8 @@ public class LevelGrid : MonoBehaviour
         Instance = this;
 
         gridSystem = new GridSystem(gridWidth, gridHeight, cellSize);
-        gridSystem.CreateDebugObjects(gridDebugObjectPrefab);
+        if (testing)
+            gridSystem.CreateDebugObjects(gridDebugObjectPrefab);
     }
 
     public void AddEntityAtGridPosition(GridPosition gridPosition, Entity entity)
