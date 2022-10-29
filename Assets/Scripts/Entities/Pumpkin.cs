@@ -18,6 +18,14 @@ public class Pumpkin : Entity
         rigidBody2D = GetComponent<Rigidbody2D>();
     }
 
+    private void Start()
+    {
+        rigidBody2D.simulated = false;
+        InitializeGridPosition();
+        SnapToGrid();
+        rigidBody2D.simulated = true;
+    }
+
     private void OnDestroy() => GameManager.OnBeforeStateChanged -= OnStateChanged;
 
     private void OnStateChanged(GameState newState)
@@ -30,33 +38,37 @@ public class Pumpkin : Entity
         // Update GridSystem
         UpdateGridPosition();
 
-        // Check when the pumpkin is fully resting to allow movement again
-        CheckEntityStable();
-
-        // Only allow interaction when it's the entity turn
-        if (GameManager.Instance.State != GameState.CHARACTERMOVE) return;
-
-        // Keyboard input
-        if (HandleInput())
-            ExecuteMove();
+        switch (GameManager.Instance.State)
+        {
+            case GameState.RUNNING:
+                CheckEntityStable();
+                break;
+            case GameState.CHARACTERMOVE:
+                HandleMove();
+                break;
+            default:
+                break;
+        }
     }   
 
     private void CheckEntityStable()
     {
-        // Only allow interaction when game is running
-        if (GameManager.Instance.State != GameState.RUNNING) return;
-
-        if (rigidBody2D.velocity == Vector2.zero)
+        if (rigidBody2D.velocity.magnitude < 0.001f)
+        {
             GameManager.Instance.ChangeState(GameState.CHARACTERMOVE);
+        }
     }
 
-    private void ExecuteMove()
+    private void HandleMove()
     {
-        // Override this to do some hero-specific logic, then call this base method to clean up the turn
-        Debug.Log(moveDirection);
-        rigidBody2D.AddForce(moveDirection * forceMulti);
+        if (HandleInput())
+        {
+            Debug.Log(moveDirection);
+            rigidBody2D.AddForce(moveDirection * forceMulti);
+            moveDirection = Vector2.zero;
 
-        GameManager.Instance.ChangeState(GameState.RUNNING);
+            GameManager.Instance.ChangeState(GameState.RUNNING);
+        }
     }
 
     private bool HandleInput()
