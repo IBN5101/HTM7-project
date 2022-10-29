@@ -1,9 +1,12 @@
 using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : StaticInstance<GameManager> {
     public static event Action<GameState> OnBeforeStateChanged;
     public static event Action<GameState> OnAfterStateChanged;
+    [SerializeField] private string _sceneName;
+    [SerializeField] private string _nextSceneName;
 
     [SerializeField] private GameObject _winScreen;
     [SerializeField] private GameObject _loseScreen;
@@ -50,6 +53,14 @@ public class GameManager : StaticInstance<GameManager> {
     private void HandleLosing() {
         _winScreen.SetActive(false);
         _loseScreen.SetActive(true);
+    }
+
+    public void ReloadScene() {
+        SceneManager.LoadScene(_sceneName);
+    }
+
+    public void LoadNextLevel() {
+        SceneManager.LoadScene(_nextSceneName);
     }
 }
 
