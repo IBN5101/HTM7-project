@@ -59,7 +59,6 @@ public class Pumpkin : Entity
     {
         if (HandleInput())
         {
-            Debug.Log(moveDirection);
             rigidBody2D.AddForce(moveDirection * forceMulti);
             moveDirection = Vector2.zero;
 
