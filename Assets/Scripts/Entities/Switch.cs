@@ -22,6 +22,11 @@ public class Switch : Entity
         SnapToGrid();
     }
 
+    private void OnDestroy()
+    {
+        linkedPumpkin.OnGridPositionUpdated -= Pumpkin_OnGridPositionUpdated;
+    }
+
     private void Pumpkin_OnGridPositionUpdated(object sender, EventArgs empty)
     {
         List<Entity> entities = LevelGrid.Instance.GetEntitiesAtGridPosition(gridPosition);

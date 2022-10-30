@@ -455,7 +455,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &80123087 stripped
 Transform:
@@ -3166,8 +3166,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7efb1ae7a61b254489a4d92a2d5a7065, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _sceneName: Level2
-  _nextSceneName: Level3
+  _sceneName: Level4
+  _nextSceneName: Level5
   _winScreen: {fileID: 475474137}
   _loseScreen: {fileID: 431308811}
 --- !u!4 &831507661
@@ -5702,7 +5702,7 @@ RectTransform:
   - {fileID: 475474138}
   - {fileID: 431308812}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -6642,7 +6642,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 989809108580571159, guid: 1564b27f0ba35a241a4d9b9e2fee27a6, type: 3}
       propertyPath: m_RootOrder
-      value: 8
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 989809108580571159, guid: 1564b27f0ba35a241a4d9b9e2fee27a6, type: 3}
       propertyPath: m_LocalPosition.x

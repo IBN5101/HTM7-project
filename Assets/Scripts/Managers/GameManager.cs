@@ -60,6 +60,12 @@ public class GameManager : StaticInstance<GameManager> {
     public void LoadNextLevel() {
         SceneManager.LoadScene(_nextSceneName);
     }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.R))
+            ReloadScene();
+    }
 }
 
 [Serializable]
